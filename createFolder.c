@@ -16,32 +16,3 @@ int main(main)
 	gets(fileName);
     createFolder(fileName);
 	return 0;
-}
-
-int createFolder(const char *fileName)
-{
-	FILE *fp;
-	fp = fopen(fileName,"r");
-	while(1)
-	{
-		int i;
-        char tempString[100];
-		for(i = 0; i <= 100; i++)
-			tempString[i] = '\0';
-		char ch = '\0';
-		for(i = 0; ch != '\n'; i++)
-		{
-			ch = getc(fp);
-			if(ch =='\t')
-			      ch=' ';
-			tempString[i] = ch;	
-            if(ch =='*')   
-                  exit(0);  
-		}
-		tempString[--i] = '\0';
-		mkdir(tempString);
-	}
-	
-	fclose(fp);
-	return 0;
-}
